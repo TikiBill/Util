@@ -1,0 +1,8 @@
+#List of modules in order in which they should be built. No need to list the test nor benchmark modules
+#  if they are named the same as the main module, or with .Test/.Benchmark
+#
+#When a .Test or .Benchmark is found, it will NOT be packed into a NuGet package.
+#
+#language   type    name
+dotnet  library Lava-Data.StringExtensions
+dotnet  library Lava-Data.DateTimeExtensions
