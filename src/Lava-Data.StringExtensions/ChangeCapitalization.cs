@@ -13,8 +13,39 @@ namespace LavaData.StringExtensions
     /// 
     /// You can override the word-boundary style by passing your own function to each method.
     /// </summary>
-    public static class ChangeCapitalization
+    public static class ChangeStringCapitalization
     {
+
+        /// <summary>
+        /// Change the capitalization of a string.
+        /// </summary>
+        /// <param name="str">The string to change.</param>
+        /// <param name="toCase">The capitalization style. <see cref="StringCapitalizationEnum"> for options.</param>
+        /// <param name="wordBoundaryTest">Optional method to determine word boundaries.</param>
+        /// <returns>The new string.</returns>
+        public static string ChangeCapitalization(this string str, StringCapitalization toCase, IsNewWordBoundary wordBoundaryTest = null)
+        {
+            switch (toCase)
+            {
+                case StringCapitalization.KeepCase:
+                    return str;
+                case StringCapitalization.UpperCase:
+                    return str.ToUpper();
+                case StringCapitalization.LowerCase:
+                    return str.ToLower();
+                case StringCapitalization.PascalCase:
+                    return str.ToPascalCase(wordBoundaryTest: wordBoundaryTest);
+                case StringCapitalization.CamelCase:
+                    return str.ToCamelCase(wordBoundaryTest: wordBoundaryTest);
+                case StringCapitalization.SnakeCase:
+                    return str.ToSnakeCase(wordBoundaryTest: wordBoundaryTest);
+                case StringCapitalization.HtmlIdCase:
+                    return str.ToHtmlIdCase(wordBoundaryTest: wordBoundaryTest);
+                default:
+                    //Unreachable with the enum unless someone changes it without changing this switch statement.
+                    throw new ArgumentException("INTERNAL ERROR: StringCapitalization has ENUM value not handled in the switch!");
+            }
+        }
 
         /// <summary>
         /// Delegate for determining when a character is at a world boundary.
@@ -271,9 +302,9 @@ namespace LavaData.StringExtensions
         /// Convert a string to snake_case, removing any leading or trailing spaces.
         /// </summary>
         /// <param name="str">The string to convert.</param>
-        /// <param name="wordBoundaryTest">Optional delegate for determining word boundaries.</param>
+        /// <param name="wordBoundaryTest">Optional delegate for determining word boundaries. </param>
         /// <returns>A newly created (allocated) string.</returns>
-        public static string ToSnakeCase(this string str, IsNewWordBoundary wordBoundryTest = null, char separator = '-') => ToLowercaseSeparated(str, wordBoundryTest, '_');
+        public static string ToSnakeCase(this string str, IsNewWordBoundary wordBoundaryTest = null, char separator = '-') => ToLowercaseSeparated(str, wordBoundaryTest, '_');
 
 
         /// <summary>
@@ -282,7 +313,7 @@ namespace LavaData.StringExtensions
         /// <param name="str">The string to convert.</param>
         /// <param name="wordBoundaryTest">Optional delegate for determining word boundaries.</param>
         /// <returns>A newly created (allocated) string.</returns>
-        public static string ToHtmlIdCase(this string str, IsNewWordBoundary wordBoundryTest = null) => ToLowercaseSeparated(str, wordBoundryTest, '-');
+        public static string ToHtmlIdCase(this string str, IsNewWordBoundary wordBoundaryTest = null) => ToLowercaseSeparated(str, wordBoundaryTest, '-');
 
 
     }
