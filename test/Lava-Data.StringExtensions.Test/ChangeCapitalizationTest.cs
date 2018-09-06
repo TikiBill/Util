@@ -67,18 +67,18 @@ namespace LavaData.StringExtensions.Test
         [Fact]
         void ToHtmlIdCaseTest()
         {
-            Assert.Null(((string)null).ToHtmlIdCase());
-            Assert.Equal(string.Empty, "    ".ToHtmlIdCase());
-            Assert.Equal("a", "A".ToHtmlIdCase());
-            Assert.Equal("hello-there", "hello-there".ToHtmlIdCase());
-            Assert.Equal("hello-there", "hello_there".ToHtmlIdCase());
-            Assert.Equal("hello-there", "hello__there".ToHtmlIdCase());
-            Assert.Equal("hello-there", "hello there".ToHtmlIdCase());
-            Assert.Equal("hello-there", "HelloThere".ToHtmlIdCase());
-            Assert.Equal("mime-text", "MIMEText".ToHtmlIdCase());
-            Assert.Equal("-hello-there", "_hello_there".ToHtmlIdCase());
-            Assert.Equal("-hello-there", "_HelloThere".ToHtmlIdCase());
-            Assert.Equal("-hello-there", "_hello_there".ToHtmlIdCase());
+            Assert.Null(((string)null).ToKebabCase());
+            Assert.Equal(string.Empty, "    ".ToKebabCase());
+            Assert.Equal("a", "A".ToKebabCase());
+            Assert.Equal("hello-there", "hello-there".ToKebabCase());
+            Assert.Equal("hello-there", "hello_there".ToKebabCase());
+            Assert.Equal("hello-there", "hello__there".ToKebabCase());
+            Assert.Equal("hello-there", "hello there".ToKebabCase());
+            Assert.Equal("hello-there", "HelloThere".ToKebabCase());
+            Assert.Equal("mime-text", "MIMEText".ToKebabCase());
+            Assert.Equal("-hello-there", "_hello_there".ToKebabCase());
+            Assert.Equal("-hello-there", "_HelloThere".ToKebabCase());
+            Assert.Equal("-hello-there", "_hello_there".ToKebabCase());
         }
 
     }

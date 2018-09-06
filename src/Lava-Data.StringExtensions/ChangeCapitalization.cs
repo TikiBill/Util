@@ -40,7 +40,7 @@ namespace LavaData.StringExtensions
                 case StringCapitalization.SnakeCase:
                     return str.ToSnakeCase(wordBoundaryTest: wordBoundaryTest);
                 case StringCapitalization.HtmlIdCase:
-                    return str.ToHtmlIdCase(wordBoundaryTest: wordBoundaryTest);
+                    return str.ToKebabCase(wordBoundaryTest: wordBoundaryTest);
                 default:
                     //Unreachable with the enum unless someone changes it without changing this switch statement.
                     throw new ArgumentException("INTERNAL ERROR: StringCapitalization has ENUM value not handled in the switch!");
@@ -313,7 +313,7 @@ namespace LavaData.StringExtensions
         /// <param name="str">The string to convert.</param>
         /// <param name="wordBoundaryTest">Optional delegate for determining word boundaries.</param>
         /// <returns>A newly created (allocated) string.</returns>
-        public static string ToHtmlIdCase(this string str, IsNewWordBoundary wordBoundaryTest = null) => ToLowercaseSeparated(str, wordBoundaryTest, '-');
+        public static string ToKebabCase(this string str, IsNewWordBoundary wordBoundaryTest = null) => ToLowercaseSeparated(str, wordBoundaryTest, '-');
 
 
     }
