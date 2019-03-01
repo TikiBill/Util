@@ -246,6 +246,7 @@ namespace LavaData.StringExtensions
                 case Single s: return ToSqlQuotedString(s);
                 case Double d: return ToSqlQuotedString(d);
                 case DateTime dt: return ToSqlQuotedString(dt);
+                case Boolean b: return ToSqlQuotedString(b);
                 case Guid guid: return ToSqlQuotedString(guid);
 
                 default:
