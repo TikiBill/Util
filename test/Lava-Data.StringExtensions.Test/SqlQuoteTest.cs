@@ -30,6 +30,13 @@ namespace LavaData.StringExtensions.Test
             Assert.Equal("NULL", ((object)(char?)null).ToSqlQuotedString());
             Assert.Equal("''''", ((object)'\'').ToSqlQuotedString());  // Make sure a single quote character is handled correctly!
 
+            //Bool
+            Assert.Equal("1", ((object)true).ToSqlQuotedString());
+            Assert.Equal("0", ((object)false).ToSqlQuotedString());
+            Assert.Equal("1", ((object)(bool?)true).ToSqlQuotedString());
+            Assert.Equal("0", ((object)(bool?)false).ToSqlQuotedString());
+            Assert.Equal("NULL", ((object)(bool?)null).ToSqlQuotedString());
+
             // Int16
             Assert.Equal("16", ((object)(short)16).ToSqlQuotedString());
             Assert.Equal("-16", ((object)(short)-16).ToSqlQuotedString());
