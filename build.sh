@@ -56,7 +56,7 @@ function build_dotnet {
                         if $ERRORS_ARE_FATAL; then exit 1; fi
                     fi
                     
-                    if ! dotnet build; then
+                    if ! dotnet build -c Release; then
                         ERROR_COUNT=$(($ERROR_COUNT+1))
                         ERROR_LOG+=("dotnet build failed (in $PWD)")
                         echo
