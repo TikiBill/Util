@@ -56,7 +56,7 @@ function build_dotnet {
                         if $ERRORS_ARE_FATAL; then exit 1; fi
                     fi
                     
-                    if ! dotnet build -c Release; then
+                    if ! dotnet build -c $BUILD_CONFIG; then
                         ERROR_COUNT=$(($ERROR_COUNT+1))
                         ERROR_LOG+=("dotnet build failed (in $PWD)")
                         echo
@@ -72,7 +72,7 @@ function build_dotnet {
                     
                     if [ "$SRC_DIR" = "test" -o "$SRC_DIR" = "benchmark" ]; then
                         echo "NOTE: Not packing $SRC_DIR code."
-                        elif ! dotnet pack; then
+                        elif ! dotnet pack -c $BUILD_CONFIG; then
                         ERROR_COUNT=$(($ERROR_COUNT+1))
                         ERROR_LOG+=("dotnet pack failed (in $PWD)")
                         echo

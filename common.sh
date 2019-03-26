@@ -10,7 +10,7 @@ DEBUG=true
 VERBOSE=true
 
 # Debug or Release build.
-BUILD_CONFIG="Debug"
+BUILD_CONFIG="Release"
 
 # Counter for if errors are not fatal.
 ERROR_COUNT=0
