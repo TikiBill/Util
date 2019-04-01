@@ -77,3 +77,4 @@ while read LANGUAGE TYPE DIR; do
     fi
 done <<< $(cat modules.txt|awk -F '#' '{print $1}')
 
+function join_by { local IFS="$1"; shift; echo "$*"; }

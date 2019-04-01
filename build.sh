@@ -16,7 +16,7 @@ function build_dotnet {
     for SRC_DIR in src test; do
         for EXTRA in '' '.Test' '.Benchmark'; do
             #Build all of the non .Test modules first.
-            for BASE_MODULE in ${DOTNET_MODULE_DIRS}; do
+            for BASE_MODULE in ${DOTNET_MODULE_DIRS[@]}; do
                 MODULE="$BASE_MODULE$EXTRA"
                 OBJ_DIR="$SRC_DIR/$MODULE";
                 if ! cd $ROOT_DIR; then
@@ -112,6 +112,8 @@ function build_dotnet {
     cd $ROOT_DIR
 }
 
+echo -n "Dotnet Modules: "
+join_by ', ' "${DOTNET_MODULE_DIRS[@]}"
 
 build_dotnet;
 echo
