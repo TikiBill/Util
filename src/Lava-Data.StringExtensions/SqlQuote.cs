@@ -27,6 +27,8 @@ namespace LavaData.StringExtensions
     public static class ToSqlQuotedStringMethods
     {
 
+        public static bool KeepTabsNewLinesAndCarriageReturns = true;
+
         /// <summary>
         /// The default string used to format a DateTime. Intended to be overridden if
         /// your application requires something different. Or simply pass in an
@@ -47,6 +49,8 @@ namespace LavaData.StringExtensions
         /// <summary>
         /// ANSI quote a string using single quotes. Will always quote the string regardless as to if
         /// it is needed, e.g. for numbers. Silently removes control characters, most notably null.
+        /// By default it will keep tabs, new-lines, and carriage returns. Should your database not
+        /// support that, you can change that behavior by setting KeepTabsNewLinesAndCarriageReturns
         /// 
         /// Optimized for short strings (less than ~512 characters), and avoids the performance hit
         /// of calling Char.IsControl.
@@ -82,6 +86,10 @@ namespace LavaData.StringExtensions
                     }
                     else if (c <= '\x001f' || (c >= '\x007f' && c <= '\x009f'))
                     {
+                        if (KeepTabsNewLinesAndCarriageReturns && (c == '\t' || c == '\n' || c == '\r'))
+                        {
+                            cPtr[dest++] = c;
+                        }
                         // Silently Ignore.
                         // Calling IsControl adds significant time (almost doubles) the time to loop.
                     }
