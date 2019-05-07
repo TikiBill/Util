@@ -90,7 +90,7 @@ namespace LavaData.DateTimeExtensions
         /// <param name="deltaSeconds">The number of seconds that have passed.</param>
         /// <param name="precision">How many time units.</param>
         /// <returns>A string for human consumption.</returns>
-        public static string DeltaSecondsToHumanDeltaTime(long deltaSeconds, int precision = 2)
+        public static string DeltaSecondsToHumanDeltaTime(this long deltaSeconds, int precision = 2)
         {
 
             List<string> text = new List<string>();
@@ -119,6 +119,11 @@ namespace LavaData.DateTimeExtensions
                 return String.Join(", ", text);
             else
                 return "Right Now";
+        }
+
+        public static string DeltaSecondsToHumanDeltaTime(this double deltaSeconds, int precision = 2)
+        {
+            return DeltaSecondsToHumanDeltaTime((long)deltaSeconds, precision);
         }
     }
 }
