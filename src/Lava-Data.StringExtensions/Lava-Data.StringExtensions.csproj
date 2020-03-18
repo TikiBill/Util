@@ -4,6 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Version>1.0.3</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Bill Adams</Authors>
+    <Company>Lava-Data</Company>
+    <Description>String extension methods.</Description>
+    <RepositoryUrl>https://github.com/TikiBill/Util</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/TikiBill/Util</PackageProjectUrl>
+    <PackageTags>String</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

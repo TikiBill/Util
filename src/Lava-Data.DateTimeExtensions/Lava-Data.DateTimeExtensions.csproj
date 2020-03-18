@@ -4,6 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Lava_Data.DateTimeExtensions</RootNamespace>
     <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Bill Adams</Authors>
+    <Company>Lava-Data</Company>
+    <Description>DateTime extension methods, e.g. UNIX epoch related methods.</Description>
+    <RepositoryUrl>https://github.com/TikiBill/Util</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/TikiBill/Util</PackageProjectUrl>
+    <PackageTags>String</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
