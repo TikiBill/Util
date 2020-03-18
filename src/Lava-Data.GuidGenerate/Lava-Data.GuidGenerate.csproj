@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Bill Adams</Authors>
+    <Company>Lava-Data</Company>
+    <Description>Sortable Time-Based GUID (UUID) creation.</Description>
+    <RepositoryUrl>https://github.com/TikiBill/Util</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/TikiBill/Util</PackageProjectUrl>
+    <PackageTags>GUID, UUID</PackageTags>
+    <PackageLicenseExpression>Apache 2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+</Project>

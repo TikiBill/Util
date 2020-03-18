@@ -28,3 +28,10 @@ useful for day to day work.
 * **SqlQuote** -- Methods to quote strings (and other types).
 
 * **StringCaseEnum** -- Enumeration for different string cases.
+
+## Time-Based GUID (UUID) Class
+
+A static class for generating time-based GUIDs.
+See the project specific [ReadMe](src/Lava-Data.GuidGenerate/README.md)
+
+## END OF LINE
