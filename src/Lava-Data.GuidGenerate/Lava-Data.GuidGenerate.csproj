@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/TikiBill/Util</RepositoryUrl>
     <PackageProjectUrl>https://github.com/TikiBill/Util</PackageProjectUrl>
     <PackageTags>GUID, UUID</PackageTags>
-    <PackageLicenseExpression>Apache 2.0</PackageLicenseExpression>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
