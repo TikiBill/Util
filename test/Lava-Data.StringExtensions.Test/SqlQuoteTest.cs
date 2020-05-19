@@ -106,6 +106,16 @@ namespace LavaData.StringExtensions.Test
         }
 
 
+        /// <summary>
+        /// MySQL will allow a single backslash to escape a single quite (by default).
+        /// So we have double the backslash.
+        /// </summary>
+        [Fact]
+        public void QuoteBackslashStrings()
+        {
+            Assert.Equal("'Hello\\'", "Hello\\".ToSqlQuotedString());
+        }
+
         [Fact]
         public void QuoteViaPropertyTest()
         {
