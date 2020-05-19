@@ -84,6 +84,16 @@ namespace LavaData.StringExtensions
                         cPtr[dest + 1] = '\'';
                         dest += 2;
                     }
+                    else if (c == '\\'
+                        && ((i + 1) == src.Length // Last character is a backslash.
+                        || i + 1 < src.Length && src[i + 1] == '\'')) // Next character is a single quote.
+                    {
+                        // MySQL allows a backslash-quote to escape a single quote (by default).
+                        // Perhaps add a static config to disable this?
+                        cPtr[dest + 0] = '\\';
+                        cPtr[dest + 1] = '\\';
+                        dest += 2;
+                    }
                     else if (c <= '\x001f' || (c >= '\x007f' && c <= '\x009f'))
                     {
                         if (KeepTabsNewLinesAndCarriageReturns && (c == '\t' || c == '\n' || c == '\r'))

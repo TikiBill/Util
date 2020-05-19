@@ -113,7 +113,8 @@ namespace LavaData.StringExtensions.Test
         [Fact]
         public void QuoteBackslashStrings()
         {
-            Assert.Equal("'Hello\\'", "Hello\\".ToSqlQuotedString());
+            Assert.Equal("'Hello\\\\\'", "Hello\\".ToSqlQuotedString());
+            Assert.Equal("'Hel\\\\''lo'", "Hel\\'lo".ToSqlQuotedString());
         }
 
         [Fact]
