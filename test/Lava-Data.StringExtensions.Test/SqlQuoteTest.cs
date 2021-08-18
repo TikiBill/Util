@@ -85,10 +85,12 @@ namespace LavaData.StringExtensions.Test
             var guidStr = "'" + guid.ToString("D") + "'";
             Assert.Equal(guidStr, ((object)guid).ToSqlQuotedString());
             Assert.Equal(guidStr, ((object)nullableGuid).ToSqlQuotedString());
+
+            var defaultGuidStr = "'" + default(System.Guid).ToString("D") + "'";
             nullableGuid = null;
             Assert.Equal("NULL", ((object)nullableGuid).ToSqlQuotedString());
-            Assert.Equal("NULL", ((object)default(Guid)).ToSqlQuotedString());
-            Assert.Equal("NULL", ((object)((Guid?)default(Guid))).ToSqlQuotedString());
+            Assert.Equal(defaultGuidStr, ((object)default(Guid)).ToSqlQuotedString());
+            Assert.Equal(defaultGuidStr, ((object)((Guid?)default(Guid))).ToSqlQuotedString());
         }
 
         [Fact]

@@ -10,9 +10,9 @@ namespace LavaData.StringExtensions
     /// String and other primitive type extension methods to quote for an SQL database. Strings
     /// are surrounded by single quotes with single quotes inside the passed
     /// string doubled up (to escape them) and nulls and control characters silently removed.false
-    /// 
+    ///
     /// Primitive numeric types are not surrounded with quotes.
-    /// 
+    ///
     /// If null is passed, then the string NULL is returned.
     /// </summary>
 
@@ -40,7 +40,7 @@ namespace LavaData.StringExtensions
         /// <summary>
         /// The default format for a GUID.static Intended to be overridden if your application
         /// requires something different
-        /// 
+        ///
         /// D = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (Default)
         /// B = {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
         /// </summary>
@@ -51,7 +51,7 @@ namespace LavaData.StringExtensions
         /// it is needed, e.g. for numbers. Silently removes control characters, most notably null.
         /// By default it will keep tabs, new-lines, and carriage returns. Should your database not
         /// support that, you can change that behavior by setting KeepTabsNewLinesAndCarriageReturns
-        /// 
+        ///
         /// Optimized for short strings (less than ~512 characters), and avoids the performance hit
         /// of calling Char.IsControl.
         /// You can find the benchmarks FIXME here.
@@ -203,7 +203,7 @@ namespace LavaData.StringExtensions
 
         /// <summary>
         /// Return a quoted date-time string using the string in DefaultDateTimeFormat.
-        /// 
+        ///
         /// Note: a default DateTime value is considered, and returned as, NULL.
         /// </summary>
         public static string ToSqlQuotedString(this DateTime dt) =>
@@ -211,27 +211,28 @@ namespace LavaData.StringExtensions
 
         /// <summary>
         /// Return a quoted date-time string using the format string in DefaultDateTimeFormat.
-        /// 
-        /// Note: a default DateTime value is considered, and returned as, NULL.
+        ///
+        /// Note: a default DateTime value is considered, and returned as, NULL
+        /// since it is not a valid date, and any database which validates a date
+        /// is valid will throw an error.
         /// </summary>
         public static string ToSqlQuotedString(this DateTime? dt) =>
             dt == null || dt.Equals(default(DateTime)) ? "NULL" : ToSqlQuotedString(((DateTime)dt).ToString(DefaultDateTimeFormat));
 
         /// <summary>
         /// Return a quoted Guid string using the format string in DefaultGuidFormat.
-        /// 
-        /// Note: a default Guid value is considered, and returned as, NULL.
+        ///
+        /// Note: a default Guid value is returned as a quoted value (and not NULL).
         /// </summary>
-        public static string ToSqlQuotedString(this Guid guid) =>
-            guid.Equals(default(Guid)) ? "NULL" : ToSqlQuotedString(guid.ToString(DefaultGuidFormat));
+        public static string ToSqlQuotedString(this Guid guid) => ToSqlQuotedString(guid.ToString(DefaultGuidFormat));
 
         /// <summary>
         /// Return a quoted Guid string using the format string in DefaultGuidFormat.
-        /// 
-        /// Note: a default Guid value is considered, and returned as, NULL.
+        ///
+        /// Note: a default Guid value is returned as a quoted value (and not NULL).
         /// </summary>
         public static string ToSqlQuotedString(this Guid? guid) =>
-            guid == null || guid.Equals(default(Guid)) ? "NULL" : ToSqlQuotedString(((Guid)guid).ToString(DefaultGuidFormat));
+            guid is null ? "NULL" : ToSqlQuotedString(((Guid)guid).ToString(DefaultGuidFormat));
 
 
         /// <summary>
