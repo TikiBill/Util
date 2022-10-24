@@ -15,7 +15,7 @@ namespace LavaData.StringExtensions.Test
     {
         /// <summary>
         /// Test object including boxed value types. Every case statement must
-        /// be tested to ensure we do not accidently get into an infinite loop.
+        /// be tested to ensure we do not accidentally get into an infinite loop.
         /// </summary>
         [Fact]
         public void QuoteTestObject()
@@ -140,6 +140,17 @@ namespace LavaData.StringExtensions.Test
                     default: str = "?"; break;
                 }
             }
+        }
+
+        /// <summary>
+        /// SQL Server Unicode quoted strings.
+        /// </summary>
+        [Fact]
+        public void QuoteWithNPreifxTest()
+        {
+            Assert.Equal("N'Hello'", "Hello".ToSqlQuotedString(withNPrefix: true));
+            Assert.Equal("NULL", ((string)null).ToSqlQuotedString(withNPrefix: true));
+            Assert.Equal("N'N''Hello'", "N'Hello".ToSqlQuotedString(withNPrefix: true));
         }
 
     }
