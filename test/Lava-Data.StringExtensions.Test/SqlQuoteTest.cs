@@ -153,6 +153,32 @@ namespace LavaData.StringExtensions.Test
             Assert.Equal("N'N''Hello'", "N'Hello".ToSqlQuotedString(withNPrefix: true));
         }
 
+        [Fact]
+        public void Test001_LongstringWithNewlines()
+        {
+            var longStr = new string('z', 500) + "\n" + new string('z', 11);
+            var result = longStr.ToSqlQuotedString();
+
+            Assert.Equal($"'{new string('z', 500)}\n{new string('z', 11)}'", result);
+        }
+
+        [Fact]
+        public void Test002_LongstringwithNewlines()
+        {
+            var longStr = new string('z', 510) + "\n" + new string('z', 2);
+            var result = longStr.ToSqlQuotedString();
+
+            Assert.Equal($"'{new string('z', 510)}\n{new string('z', 2)}'", result); 
+        }
+
+        [Fact]
+        public void Test003_LongStringWithNewlines()
+        {
+            var longStr = "Hel\0lo" + new string('z', 510) + "\n" + new string('z', 2);
+            var result = longStr.ToSqlQuotedString();
+
+            Assert.Equal($"'Hello{new string('z', 510)}\n{new string('z', 2)}'", result);
+        }
     }
 
     class BooClass
