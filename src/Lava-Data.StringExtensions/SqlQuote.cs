@@ -137,8 +137,14 @@ namespace LavaData.StringExtensions
             for (int i = 0; i < src.Length; ++i)
             {
                 c = str[i];
-                if (c == '\'') ++singleQuotes;
-                else if (c <= '\x001f' || (c >= '\x007f' && c <= '\x009f')) ++controlChars;
+                if (c == '\'')
+                {
+                    ++singleQuotes;
+                }
+                else if ((c <= '\x001f' || (c >= '\x007f' && c <= '\x009f')) && !(KeepTabsNewLinesAndCarriageReturns && (c == '\t' || c == '\n' || c == '\r')))
+                {
+                    ++controlChars;
+                }
             }
 
             if (singleQuotes + controlChars == 0)
@@ -180,6 +186,10 @@ namespace LavaData.StringExtensions
                 else if (c <= '\x001f' || (c >= '\x007f' && c <= '\x009f'))
                 {
                     // Calling IsControl adds significant time (almost doubles) the time to loop.
+                    if (KeepTabsNewLinesAndCarriageReturns && (c == '\t' || c == '\n' || c == '\r'))
+                    {
+                        newChars[dest++] = c;
+                    }
                 }
                 else
                 {
